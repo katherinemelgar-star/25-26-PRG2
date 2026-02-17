@@ -5,7 +5,7 @@ public class ExamenMina{
     static final int COLUMNAS = 7;
     static final int TOTAL_MINAS = 5;
     static final int MAX_EXPLOSIONES = 3;
-
+	static final int CASILLAS_PARA_GANAR = (FILAS * COLUMNAS) - TOTAL_MINAS;
 	static String[][] mapaMinasMostrar; 
     static String[][] mapaMinasActivas;
 
@@ -15,12 +15,12 @@ public class ExamenMina{
     mapaMinasActivas = inicializarMapa("0");
 
 	colocarMinas();
-
-	int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
+	int juegoEncendido = 1, contadorMapa = 0, contadorMinas = 0;
 	while(juegoEncendido==1){
 		dibujarTablero();
 		valoresCorrectos = 0;
 		while(valoresCorrectos==0){
+			dibujarTablero();
 			System.out.println("Ingrese X (1-7)");
 			posY = scan.nextInt();
 			System.out.println("Ingrese Y (1-5)");
