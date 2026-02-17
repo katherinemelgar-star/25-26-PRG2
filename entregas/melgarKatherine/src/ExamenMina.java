@@ -14,54 +14,39 @@ public class ExamenMina{
 	mapaMinasMostrar = inicializarMapa("-");
     mapaMinasActivas = inicializarMapa("0");
 
-	int i=0;	
-	while ( i < 5){
-		int PosYMina = (int)(Math.random()*2+1);
-		int PosXMina = (int)(Math.random()*4+1);
-		
-		if (mapaMinasActivas[PosXMina][PosYMina]=="1"){
-		i=i-1;
-		}
-		else {
-			mapaMinasActivas[PosXMina+1][PosYMina+1]="1";
-		}
-		i++;
-	}
+	colocarMinas();
 
 	int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
 	while(juegoEncendido==1){
-	for( i = 0; i<mapaMinasMostrar.length; i++){            
-		for (int j = 0; j<=mapaMinasMostrar.length+1; j++) {                                     
-			System.out.print(mapaMinasMostrar[i][j]);
-			}
-			System.out.println(" ");
-		}
-		valoresCorrectos=0;
+		dibujarTablero();
+		valoresCorrectos = 0;
 		while(valoresCorrectos==0){
-			System.out.println("Ingrese X");
+			System.out.println("Ingrese X (1-7)");
 			posY = scan.nextInt();
-			System.out.println("Ingrese Y");
+			System.out.println("Ingrese Y (1-5)");
 			posX = scan.nextInt();
-			if(posX > FILAS || posY > COLUMNAS){
-				valoresCorrectos=0;
-				System.out.println("Coordenadas fuera de rango.");
+			if (posX >= 1 && posX <= FILAS && posY >= 1 && posY <= COLUMNAS) {
+				valoresCorrectos=1;
 			}
 			else{
-				valoresCorrectos=1;
+				System.out.println("Coordenadas fuera de rango");
 			}
 		}
 		if(mapaMinasActivas[posX][posY]=="1"){
 		mapaMinasMostrar[posX][posY]="*";
 		contadorMinas++;
+		System.out.println("Mina!");
 		}
 		else{
 		mapaMinasMostrar[posX][posY]=".";
+		System.out.println("Libre.");
 		}
 		
 		contadorMapa++;
 		if(contadorMinas >= MAX_EXPLOSIONES){
 			juegoEncendido=0;
-			System.out.println("Has perdido: 3 explosiones");
+			dibujarTablero();
+			System.out.println("Has perdido: " + contadorMinas + " explosiones.");
 		}
 		else if(contadorMapa >= 31){
 			System.out.println("Felicidades Ganador!");
@@ -69,7 +54,29 @@ public class ExamenMina{
 		}
 		}
 	}	
-		
+	static void colocarMinas() {
+        int i = 0;
+        while (i < TOTAL_MINAS) {
+            int filaRandom = (int)(Math.random() * FILAS + 1);
+            int colRandom = (int)(Math.random() * COLUMNAS + 1);
+            if (mapaMinasActivas[filaRandom][colRandom].equals("0")) {
+                mapaMinasActivas[filaRandom][colRandom] = "1";
+                i++;
+            }
+        }
+    }
+
+    static void dibujarTablero() {
+        System.out.println("\n  1 2 3 4 5 6 7");
+        for (int i = 1; i <= FILAS; i++) {
+            System.out.print(i + " ");
+            for (int j = 1; j <= COLUMNAS; j++) {
+                System.out.print(mapaMinasMostrar[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+	
 	static String[][] inicializarMapa(String simbolo) {
         String[][] matriz = new String[FILAS + 1][COLUMNAS + 1];
         for (int i = 1; i <= FILAS; i++) {
