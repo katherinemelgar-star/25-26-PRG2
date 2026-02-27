@@ -4,5 +4,6 @@ class Fecha{
     public Fecha(Fecha, fecha)
 
     public void mostrarFecha()
+    public void editarFecha(int dia, int mes, int año)
     
 }
