@@ -6,4 +6,5 @@ class Fecha{
     public void mostrarFecha()
     public void editarFecha(int dia, int mes, int año)
     public Fecha sumarDias(int dias)
+    pulic Fecha restarDias(int dias)
 }
