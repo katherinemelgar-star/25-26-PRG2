@@ -24,6 +24,11 @@ public class Fraccion{
     }
 
     public Fraccion clonar(){}
+    
+    public void sumar(Fraccion fraccion){}
+    public void restar(Fraccion fraccion){}
+    public void multiplicar(Fraccion fraccion){}
+    public void dividir(Fraccion fraccion){}
 
 
 }
