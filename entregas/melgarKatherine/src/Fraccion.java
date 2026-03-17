@@ -35,5 +35,7 @@ public class Fraccion{
     public boolean equals(Fraccion fraccion){}
 
     public void mostrar(){}
+    
+    public void invertir(){}
 
 }
