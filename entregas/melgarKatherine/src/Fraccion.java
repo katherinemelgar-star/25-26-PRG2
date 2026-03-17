@@ -23,4 +23,7 @@ public class Fraccion{
         this(0, 1);
     }
 
+    public Fraccion clonar(){}
+
+
 }
