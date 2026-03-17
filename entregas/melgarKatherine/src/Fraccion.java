@@ -23,9 +23,16 @@ public class Fraccion{
         this(0, 1);
     }
 
-    public Fraccion clonar(){}
+    public Fraccion clonar(){
+        return new Fraccion(this);
+    }
 
-    public void sumar(Fraccion fraccion){}
+    public void sumar(Fraccion fraccion){
+        this.numerador = (this.numerador * fraccion.denominador) + (fraccion.numerador * this.denominador);
+        this.denominador = this.denominador * fraccion.denominador;
+        this.simplificar();
+    }
+
     public void restar(Fraccion fraccion){}
     public void multiplicar(Fraccion fraccion){}
     public void dividir(Fraccion fraccion){}
@@ -35,7 +42,7 @@ public class Fraccion{
     public boolean equals(Fraccion fraccion){}
 
     public void mostrar(){}
-    
+
     public void invertir(){}
 
 }
