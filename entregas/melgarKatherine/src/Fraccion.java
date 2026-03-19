@@ -43,14 +43,35 @@ public class Fraccion{
         this.simplificar();
     }
 
-    public void dividir(Fraccion fraccion){}
+    public void dividir(Fraccion fraccion){
+        assert fraccion.numerador != 0 : "No se puede dividir por cero";
+        this.numerador = this.numerador * fraccion.denominador;
+        this.denominador = this.denominador * fraccion.numerador;
+        this.simplificar();
+    }
 
-    public boolean esMayor(Fraccion fraccion){}
-    public boolean esMenor(Fraccion fraccion){}
+    public boolean esMayor(Fraccion fraccion){
+        return (this.numerador * fraccion.denominador) > (fraccion.numerador * this.denominador);
+    }
+
+    public boolean esMenor(Fraccion fraccion){
+        return (this.numerador * fraccion.denominador) < (fraccion.numerador * this.denominador);
+    }
+
     public boolean equals(Fraccion fraccion){}
 
     public void mostrar(){}
 
-    public void invertir(){}
+    private void validarDenominador(int posibleDenominador) {
+        assert posibleDenominador != 0 : "El cero no puede ser el denominador";
+    }
+
+    public void invertir(){
+        validarDenominador(this.numerador);
+        int denominadorTemporal = this.numerador;
+        this.numerador = this.denominador;
+        this.denominador = denominadorTemporal;
+        this.simplificar();
+    }
 
 }
