@@ -3,7 +3,7 @@ public class Fraccion{
     private int denominador;
 
     public Fraccion(int numerador, int denominador) {
-        assert denominador != 0 : "El cero no puede ser el denominador";
+        validarDenominador(denominador);
         this.numerador = numerador;
         this.denominador = denominador;
         this.simplificar();
@@ -44,7 +44,7 @@ public class Fraccion{
     }
 
     public void dividir(Fraccion fraccion){
-        assert fraccion.numerador != 0 : "No se puede dividir por cero";
+        validarDenominador(fraccion.numerador);
         this.numerador = this.numerador * fraccion.denominador;
         this.denominador = this.denominador * fraccion.numerador;
         this.simplificar();
@@ -58,9 +58,17 @@ public class Fraccion{
         return (this.numerador * fraccion.denominador) < (fraccion.numerador * this.denominador);
     }
 
-    public boolean equals(Fraccion fraccion){}
+    public boolean equals(Fraccion fraccion){
+        return this.numerador == fraccion.numerador && this.denominador == fraccion.denominador;
+    }
 
-    public void mostrar(){}
+    public void mostrar(){
+        if (this.denominador == 1) {
+            System.out.println(this.numerador);
+        } else {
+            System.out.println(this.numerador + "/" + this.denominador);
+        }
+    }
 
     private void validarDenominador(int posibleDenominador) {
         assert posibleDenominador != 0 : "El cero no puede ser el denominador";
@@ -74,4 +82,25 @@ public class Fraccion{
         this.simplificar();
     }
 
+    private int calcularMCD(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        while (b != 0) {
+            int temporal = b;
+            b = a % b;
+            a = temporal;
+        }
+        return a;
+    }
+
+    private void simplificar() {
+        int mcd = calcularMCD(this.numerador, this.denominador);
+        this.numerador /= mcd;
+        this.denominador /= mcd;
+        
+        if (this.denominador < 0) {
+            this.numerador = -this.numerador;
+            this.denominador = -this.denominador;
+        }
+    }
 }
