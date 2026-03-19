@@ -31,7 +31,12 @@ public class Fraccion{
         this.simplificar();
     }
 
-    public void restar(Fraccion fraccion){}
+    public void restar(Fraccion fraccion){
+        this.numerador = (this.numerador * fraccion.denominador) - (fraccion.numerador * this.denominador);
+        this.denominador = this.denominador * fraccion.denominador;
+        this.simplificar();
+    }
+
     public void multiplicar(Fraccion fraccion){}
     public void dividir(Fraccion fraccion){}
 
