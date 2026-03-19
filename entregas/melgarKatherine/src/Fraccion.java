@@ -3,9 +3,7 @@ public class Fraccion{
     private int denominador;
 
     public Fraccion(int numerador, int denominador) {
-        if (denominador == 0) {
-            throw new IllegalArgumentException("El cero no puede ser el denominador");
-        }
+        assert denominador != 0 : "El cero no puede ser el denominador";
         this.numerador = numerador;
         this.denominador = denominador;
         this.simplificar();
