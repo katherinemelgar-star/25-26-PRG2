@@ -37,7 +37,12 @@ public class Fraccion{
         this.simplificar();
     }
 
-    public void multiplicar(Fraccion fraccion){}
+    public void multiplicar(Fraccion fraccion){
+        this.numerador = this.numerador * fraccion.numerador;
+        this.denominador = this.denominador * fraccion.denominador;
+        this.simplificar();
+    }
+
     public void dividir(Fraccion fraccion){}
 
     public boolean esMayor(Fraccion fraccion){}
