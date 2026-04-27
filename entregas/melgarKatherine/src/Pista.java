@@ -28,7 +28,11 @@ class Pista {
         console.writeln(caballo.obtenerDibujo());
     }
 
-    public boolean haTerminado(Caballo[] caballos){}
+    public boolean haTerminado(Caballo[] caballos){
+        return this.haGanado(caballos[0]) || this.haGanado(caballos[1]);
+    }
 
-    public boolean haGanado(){}
+    public boolean haGanado(Caballo caballo){
+        return caballo.obtenerPosicion() >= LONGITUD;
+    }
 }
