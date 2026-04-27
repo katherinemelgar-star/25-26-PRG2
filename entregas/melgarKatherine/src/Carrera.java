@@ -23,6 +23,17 @@ class Carrera {
         this.anunciarGanadores();
     }
 
-    private void anunciarGanadores(){}
+    private void anunciarGanadores(){
+        boolean gano1 = pista.haGanado(caballos[0]);
+        boolean gano2 = pista.haGanado(caballos[1]);
+
+        if (gano1 && gano2) {
+            console.writeln("Empate de los caballos 1 y 2");
+        } else if (gano1) {
+            console.writeln("Ganó el caballo número 1");
+        } else {
+            console.writeln("Ganó el caballo número 2");
+        }
+    }
 
 }
