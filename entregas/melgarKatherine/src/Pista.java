@@ -14,11 +14,21 @@ class Pista {
         console.writeln();
     }
 
-    private void imprimirBorde(){}
+    private void imprimirBorde(){
+        for (int i = 0; i < LONGITUD + 4; i++) {
+            console.write("-");
+        }
+        console.writeln();
+    }
 
-    private void imprimirCarril(){}
+    private void imprimirCarril(Caballo caballo){
+        for (int i = 0; i < caballo.obtenerPosicion(); i++) {
+            console.write(" ");
+        }
+        console.writeln(caballo.obtenerDibujo());
+    }
 
-    public boolean haTerminado(){}
+    public boolean haTerminado(Caballo[] caballos){}
 
     public boolean haGanado(){}
 }
