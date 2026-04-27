@@ -4,8 +4,24 @@ class Carrera {
     private Turno turno;
     private Console console;
 
-    public Carrera(){}
-    public void jugar(){}
+    public Carrera(){
+        pista = new Pista();
+        caballos = new Caballo[2];
+        caballos[0] = new Caballo(1);
+        caballos[1] = new Caballo(2);
+        turno = new Turno();
+        console = new Console();
+    }
+
+    public void jugar(){
+        do {
+            pista.mostrar(caballos);
+            caballos[turno.toca()].correr();
+            turno.cambiar();
+        } while (!pista.haTerminado(caballos) || !turno.esFinDeRonda());
+        pista.mostrar(caballos);
+        this.anunciarGanadores();
+    }
 
     private void anunciarGanadores(){}
 
