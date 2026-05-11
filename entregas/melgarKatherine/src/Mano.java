@@ -23,13 +23,29 @@ public class Mano {
         ultima++;
     }
 
-    public void mostrar() {}
+    public void mostrar() {
+        console.writeln("-".repeat(20));
+        console.write("Mano: ");
+        for (int i = 0; i < ultima; i++) {
+            cartas[i].mostrar();
+        }
+        String estado = this.haGanado() ? "Ganó" : (this.haPerdido() ? "Perdió" : "Sigue jugando");
 
-    public boolean haGanado() {}
+        console.writeln(" - Puntaje: " + this.obtenerPuntaje() + " ==> " + estado);
+        console.writeln("-".repeat(20));
+    }
 
-    public boolean haPerdido() {}
+    public boolean haGanado() {
+        return this.obtenerPuntaje() == PUNTAJE_GANADOR;
+    }
 
-    public boolean puedeJugar() {}
+    public boolean haPerdido() {
+        return this.obtenerPuntaje() > PUNTAJE_GANADOR;
+    }
+
+    public boolean puedeJugar() {
+        return !this.haGanado() && !this.haPerdido();
+    }
 
     private int obtenerPuntaje() {}
 
