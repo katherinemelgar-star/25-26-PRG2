@@ -62,4 +62,7 @@ public class Carta {
         return this.palo == carta.palo;
     }    
 
+    public int getNumero() {
+        return this.numero;
+    }
 }
