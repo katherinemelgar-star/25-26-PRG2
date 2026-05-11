@@ -47,6 +47,28 @@ public class Mano {
         return !this.haGanado() && !this.haPerdido();
     }
 
-    private int obtenerPuntaje() {}
+    private int obtenerPuntaje() {
+        int puntaje = 0;
+        int ases = 0;
+
+        for (int i = 0; i < ultima; i++) {
+            Carta carta = cartas[i];
+            int valor = carta.getNumero() + 1;
+            
+            if (valor >= 10) {
+                valor = 10;
+            } else if (valor == 1) {
+                ases++;
+                valor = 11;
+            }
+            puntaje = puntaje + valor;
+        }
+
+        for (; puntaje > PUNTAJE_GANADOR && ases > 0; ases--) {
+            puntaje = puntaje - 10;
+        }
+
+        return puntaje;
+    }
 
 }
