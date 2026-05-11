@@ -2,6 +2,7 @@ public class Dealer {
     private Baraja baraja;
     private Mano mano;
     private Console console;
+    private Menu menu;
 
     public Dealer() {
         console = new Console();
