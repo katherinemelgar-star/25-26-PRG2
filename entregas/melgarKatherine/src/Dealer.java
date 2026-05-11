@@ -25,9 +25,19 @@ public class Dealer {
     }
 
     private void reiniciar() {
+        baraja = new Baraja();
+        mano = new Mano();
+        this.pedir();
+        this.pedir();
     }
 
     private void pedir() {
+        if (mano.puedeJugar()) {
+            Carta carta = baraja.sacar();
+            mano.recibir(carta);
+        } else {
+            console.writeln("No puedes pedir más cartas, tu turno se acabó");
+        }
     }
 
     public static void main(String[] args) {
